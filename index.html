@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Consumo Energético Doméstico</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-title">
+                    <span class="icon">⚡</span>
+                    <div>
+                        <h1>Dashboard de Consumo Energético</h1>
+                        <p>Monitorea y optimiza el consumo eléctrico de tu hogar</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tarjetas de resumen -->
+        <section class="summary-cards">
+            <div class="card card-blue">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-period" id="periodLabel1">Mensual</span>
+                </div>
+                <div class="card-value" id="totalConsumption">0.00</div>
+                <div class="card-label">kWh consumidos</div>
+            </div>
+
+            <div class="card card-green">
+                <div class="card-header">
+                    <span class="card-icon">💵</span>
+                    <span class="card-period" id="periodLabel2">Mensual</span>
+                </div>
+                <div class="card-value" id="totalCost">$0.00</div>
+                <div class="card-label">Costo estimado MXN</div>
+            </div>
+
+            <div class="card card-purple">
+                <div class="card-header">
+                    <span class="card-icon">📈</span>
+                    <span class="card-period">Proyección anual</span>
+                </div>
+                <div class="card-value" id="yearlyProjection">0</div>
+                <div class="card-label">kWh al año</div>
+            </div>
+
+            <div class="card card-orange">
+                <div class="card-header">
+                    <span class="card-icon">💡</span>
+                    <span class="card-period">Aparatos</span>
+                </div>
+                <div class="card-value" id="applianceCount">0</div>
+                <div class="card-label">registrados</div>
+            </div>
+        </section>
+
+        <!-- Selector de período -->
+        <section class="period-selector">
+            <label>Período de análisis:</label>
+            <div class="button-group">
+                <button class="period-btn" data-period="day">Diario</button>
+                <button class="period-btn active" data-period="week">Semanal</button>
+                <button class="period-btn" data-period="month">Mensual</button>
+                <button class="period-btn" data-period="year">Anual</button>
+            </div>
+        </section>
+
+        <!-- Gráficas -->
+        <section class="charts-grid">
+            <div class="chart-container">
+                <h2>Distribución del Consumo</h2>
+                <canvas id="pieChart"></canvas>
+                <div id="noDataPie" class="no-data">Agrega electrodomésticos para ver la distribución</div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Consumo por Aparato (kWh)</h2>
+                <canvas id="barChart"></canvas>
+                <div id="noDataBar" class="no-data">Agrega electrodomésticos para ver el consumo</div>
+            </div>
+        </section>
+
+        <!-- Vampiros energéticos -->
+        <section class="vampires-section" id="vampiresSection" style="display: none;">
+            <div class="section-header">
+                <span class="warning-icon">⚠️</span>
+                <h2>Vampiros Energéticos</h2>
+            </div>
+            <p>Los aparatos que más energía consumen en tu hogar:</p>
+            <div class="vampires-grid" id="vampiresGrid"></div>
+        </section>
+
+        <!-- Recomendaciones -->
+        <section class="recommendations">
+            <div class="section-header">
+                <span class="lightbulb-icon">💡</span>
+                <h2>Recomendaciones</h2>
+            </div>
+            <ul>
+                <li>Desconecta aparatos cuando no los uses para evitar el consumo "fantasma"</li>
+                <li>Considera reemplazar electrodomésticos antiguos por modelos con certificación de eficiencia energética</li>
+                <li>Usa temporizadores o enchufes inteligentes para controlar mejor el uso de energía</li>
+                <li>Aprovecha la luz natural durante el día y cambia a iluminación LED</li>
+                <li>Mantén el refrigerador a temperatura adecuada (3-5°C) y alejado de fuentes de calor</li>
+            </ul>
+        </section>
+
+        <!-- Agregar electrodoméstico -->
+        <section class="add-appliance">
+            <h2>Agregar Electrodoméstico</h2>
+            <form id="applianceForm" class="appliance-form">
+                <input type="text" id="applianceName" placeholder="Nombre del aparato" required>
+                <input type="number" id="applianceWatts" placeholder="Watts (W)" required min="1">
+                <input type="number" id="applianceHours" placeholder="Horas por día" required min="0.5" step="0.5">
+                <select id="applianceCategory">
+                    <option value="Cocina">Cocina</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Oficina">Oficina</option>
+                    <option value="Clima">Clima</option>
+                    <option value="Iluminación">Iluminación</option>
+                    <option value="Limpieza">Limpieza</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <button type="submit" class="btn-add">➕ Agregar</button>
+            </form>
+        </section>
+
+        <!-- Lista de electrodomésticos -->
+        <section class="appliances-list">
+            <h2>Electrodomésticos Registrados</h2>
+            <div id="noAppliances" class="no-data">No hay electrodomésticos registrados. ¡Agrega el primero!</div>
+            <div id="appliancesTable" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Potencia (W)</th>
+                            <th>Horas/día</th>
+                            <th>Consumo <span id="periodLabelTable">Mensual</span> (kWh)</th>
+                            <th>Costo (MXN)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appliancesTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+       
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
