@@ -72,20 +72,6 @@ const tarifa = 0.89; // Cambia este valor
 
 Consulta tu recibo de CFE para usar tu tarifa real.
 
-### Cambiar Colores
-En el archivo `styles.css`, modifica las clases de colores:
-```css
-.card-blue { background: #3b82f6; }  /* Azul */
-.card-green { background: #10b981; } /* Verde */
-.card-purple { background: #8b5cf6; } /* Morado */
-.card-orange { background: #f59e0b; } /* Naranja */
-```
-
-### Agregar Más Categorías
-En `index.html`, línea donde está el `<select id="applianceCategory">`, agrega más opciones:
-```html
-<option value="Nueva Categoría">Nueva Categoría</option>
-```
 
 ## 🌱 Relación con Desarrollo Sustentable
 
@@ -163,3 +149,4 @@ Ingeniería en Sistemas Computacionales
 ## 📄 Licencia
 Proyecto educativo de código abierto.
 Libre para usar y modificar
+
