@@ -6,7 +6,7 @@ let appliances = [
 ];
 
 let currentPeriod = 'month';
-const tarifa = 0.89; // Pesos por kWh
+const tarifa = 0.98; // Pesos por kWh
 
 // Gráficas
 let pieChart = null;
@@ -305,4 +305,5 @@ function updateAppliancesTable() {
             </tr>
         `;
     }).join('');
+
 }
