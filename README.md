@@ -67,7 +67,7 @@ dashboard-energetico/
 ### Cambiar la Tarifa Eléctrica
 En el archivo `script.js`, línea 9:
 ```javascript
-const tarifa = 0.89; // Cambia este valor
+const tarifa = 0.98; // Cambia este valor
 ```
 
 Consulta tu recibo de CFE para usar tu tarifa real.
@@ -149,4 +149,5 @@ Ingeniería en Sistemas Computacionales
 ## 📄 Licencia
 Proyecto educativo de código abierto.
 Libre para usar y modificar
+
 
