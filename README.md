@@ -23,24 +23,6 @@ dashboard-energetico/
 └── README.md          (Este archivo)
 ```
 
-## 🚀 Instalación
-
-### Opción 1: Descarga Manual (Recomendada)
-1. Crea una carpeta llamada `dashboard-energetico`
-2. Descarga los 3 archivos de los artifacts de Claude:
-   - `index.html` (Dashboard Energético - HTML Completo)
-   - `styles.css` (styles.css - Estilos del Dashboard)
-   - `script.js` (script.js - Lógica del Dashboard)
-3. Coloca los 3 archivos en la misma carpeta
-4. Abre el archivo `index.html` en tu navegador
-
-### Opción 2: Copiar y Pegar
-1. Crea una carpeta llamada `dashboard-energetico`
-2. Crea 3 archivos vacíos: `index.html`, `styles.css`, `script.js`
-3. Copia el contenido de cada artifact en su archivo correspondiente
-4. Guarda todos los archivos
-5. Abre `index.html` en tu navegador
-
 ## 💻 Uso
 
 ### Agregar un Electrodoméstico
@@ -173,33 +155,11 @@ Si cambias 10 focos incandescentes (60W) por LED (10W) que usas 5 horas al día:
 - [ ] Modo oscuro
 - [ ] Múltiples hogares/perfiles
 
-## 📝 Notas para Presentación
-
-**Puntos clave a mencionar:**
-1. Problema que resuelve: Falta de conciencia sobre consumo energético
-2. Solución: Dashboard visual e interactivo
-3. Impacto: Ambiental, económico y social
-4. Tecnología: Web estándar, sin dependencias complejas
-5. Facilidad de uso: Sin instalación, solo abrir en navegador
-
-**Demostración sugerida:**
-1. Mostrar pantalla inicial vacía
-2. Agregar 3-4 electrodomésticos comunes
-3. Mostrar gráficas generadas
-4. Identificar vampiros energéticos
-5. Cambiar períodos de análisis
-6. Mostrar proyección anual y costo
 
 ## 👨‍💻 Autor
-Proyecto desarrollado para la materia de Desarrollo Sustentable
+Proyecto desarrollado por Jonatan Uriel Gonzalez Ramirez estudiante de
 Ingeniería en Sistemas Computacionales
 
 ## 📄 Licencia
 Proyecto educativo de código abierto.
-Libre para usar, modificar y compartir.
-
----
-
-**¿Necesitas ayuda?** Revisa la documentación o contacta con tu profesor.
-
-**💡 Tip:** Comparte esta herramienta con tu familia y amigos para que también puedan monitorear su consumo energético y contribuir al cuidado del medio ambiente.
+Libre para usar y modificar
